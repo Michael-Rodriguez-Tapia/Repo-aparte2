@@ -1,0 +1,11 @@
+<%= form_with(model: @product) do |form| %>
+    <br/>
+      <%= form.label :name %>
+      <%= form.text_field :name %>
+      <%= form.label :price %>
+      <%= form.number_field :price%>
+      <%= form.label :image %>
+      <%= form.file_field :image%>
+      <br/>
+      <%= form.submit class:"button" %>
+  <% end %>

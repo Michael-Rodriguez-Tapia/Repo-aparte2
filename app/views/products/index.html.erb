@@ -1,0 +1,32 @@
+<p style="color: green"><%= notice %></p>
+
+<% if current_user.admin? %>
+  <a class="button" href="products/new"> New </a>
+<% end %>
+
+<div>
+<%= link_to "Chats", "/chats"%>
+</div>
+
+<div id="products">
+  <h1> Products </h1>
+  <table class="styled-table">
+    <thead>
+      <tr>
+        <th>Imagen</th>
+        <th>Producto</th>
+        <th>Precio</th>
+      </tr>
+    </thead>
+    <tbody>
+  <% @products.each do |product| %>
+    <tr>
+        <td><%= product.image %></td>
+        <td><%= product.name %></td>
+        <td><%= product.price %></td>
+        <td><%= link_to "Show me this Product", product %></td>
+    </tr>
+  <% end %>
+    </tbody>
+  </table>
+</div>

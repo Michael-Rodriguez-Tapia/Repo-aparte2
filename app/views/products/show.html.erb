@@ -1,0 +1,33 @@
+<p style="color: green"><%= notice %></p>
+
+<% if current_user.admin? %>
+  <div>
+  <%= link_to "Edit this Product", edit_product_path(@product) %>
+  <%= button_to "Destroy", @product, method: :delete, class:"button-2" %>
+  </div>
+<% end %>
+
+<div>
+  <%= link_to "Back to Products", products_path %>
+</div>
+<table class="styled-table">
+  <tr>
+    <td><b>Imagen:</b></td>
+    <td><%= @product.image %></td>
+  <tr>
+  <tr>
+    <td><b>Producto:</b></td>
+    <td><i><%= @product.name %></i></td>
+  <tr>
+  <tr>
+    <td><b>Precio:</b></td>
+    <td><i><%= @product.price %></i></td>
+  <tr>
+</table>
+
+<div>
+
+  <%= button_to "Order Product", orders_path(order: { id_product: @product.id, 
+  order_date: Date.today.strftime("%d/%m/%Y"), status: "pending" }), method: :post %>
+
+</div>
