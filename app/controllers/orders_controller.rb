@@ -2,23 +2,24 @@ class OrdersController < ApplicationController
     include Devise::Controllers::Helpers
 
     def order_params
-        params.require(:order).permit(:id_product, :description, :status, :order_date)
+        params.require(:order).permit(:id_product, :id_user, :description, :status, :order_date)
     end
 
 
     def index
-        @orders = current_user.orders
+        @orders = Order.all
     end
 
 
     def show
-        @orders_user = current_user.order
+        @orders = Order.where(user_id: params[:id_user])
     end
 
 
     def create
-        @order = current_user.orders.build(order_params)
-      
+        @order = Order.new(order_params)
+        @order.user_id = current_user.id # Asignar el id del usuario actual
+
         if @order.save
           render json: {message: "La orden ha sido recibida"}
         else

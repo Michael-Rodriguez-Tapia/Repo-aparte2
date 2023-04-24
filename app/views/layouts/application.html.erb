@@ -35,7 +35,7 @@
               <% if current_user.admin? %>
 
 
-                <%= link_to "Mis Reservas", orders_path(current_user), class: "navbar-item" %>
+                <%= link_to "Mis Reservas", orders_path, class: "navbar-item" %>
 
 
                 <a class="navbar-item">
@@ -50,9 +50,11 @@
 
                 <%= link_to "Mis Reservas", order_path(current_user.id), class: "navbar-item" %>
 
-                <a class="navbar-item">
-                  Mis Reseñas
-                </a>
+                <%= link_to "Mis Reseñas", reviews_path, class: "navbar-item" %>
+
+                <%= link_to "Productos", products_path, class: "navbar-item" %>
+
+                
 
               <% end %>
 

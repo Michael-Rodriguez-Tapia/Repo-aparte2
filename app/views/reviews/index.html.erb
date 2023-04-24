@@ -1,24 +1,26 @@
 <p style="color: green"><%= notice %></p>
 
-<div id="review">
-  <h1> Review <% review.product.name %> </h1>
+<div id="reviews">
+  <h1> Reviews </h1>
   <table class="styled-table">
     <thead>
       <tr>
-        <th>Usuario</th>
-        <th>Opinion</th>
-        <th>Calificacion</th>
+        <th style="width: 25%;">Producto</th>
+        <th style="width: 35%;">Opinion</th>
+        <th style="width: 20%;">Calificacion</th>
+        <th style="width: 20%;">Fecha</th>
       </tr>
     </thead>
     <tbody>
-  <%@reviews.each do |review| %>
-    <tr>
-        <td><%= review.user.name %></td>
-        <td><%= review.content %></td>
-        <td><%= review.grade %></td>
-        <td><%= link_to "Show me this Product", product %></td>
-    </tr>
-  <% end %>
+      <% @reviews.each do |review| %>
+        <% product = Product.find_by(id: review.id_product) %>
+        <tr>
+          <td><%= product.name %></td>
+          <td><%= review.content %></td>
+          <td><%= review.grade %></td>
+          <td><%= review.created_at.strftime("%d/%m/%Y") %></td>
+        </tr>
+      <% end %>
     </tbody>
   </table>
 </div>

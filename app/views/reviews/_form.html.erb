@@ -1,0 +1,11 @@
+<%= form_with(model: @review) do |form| %>
+  <br/>
+  <%= form.hidden_field :id_user, value: current_user.id %>
+  <%= form.hidden_field :id_product, value: @product.id %>
+  <%= form.label :content %>
+  <%= form.text_area :content %>
+  <%= form.label :grade %>
+  <%= form.number_field :grade %>
+  <br/>
+  <%= form.submit class:"button" %>
+<% end %>
